@@ -52,5 +52,5 @@ struct DayForecast: View {
 }
 
 #Preview {
-    DayForecast()
+    DayForecast(day: "Mon", isRainy: true, high: 93, low: 83)
 }

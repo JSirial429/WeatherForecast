@@ -8,10 +8,10 @@
 import Foundation
 import SwiftData
 
-class SampleData{
+/*class SampleData{
     let modelContainer: ModelContainer
     
     init(){
-        
+        let schema = Schema()
     }
-}
+}*/
