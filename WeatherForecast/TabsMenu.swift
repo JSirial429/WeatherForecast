@@ -9,9 +9,18 @@ import SwiftUI
 
 struct TabsMenu: View {
     var body: some View {
-        Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
+        TabView {
+            WeekForecast().tabItem {
+                Label("Weather", systemImage: "person.and.person")
+            }
+            
+            Text("U").tabItem {
+                Label("Weather", systemImage: "person.and.person")
+            }
+        }
     }
 }
+
 
 #Preview {
     TabsMenu()
