@@ -10,12 +10,12 @@ import SwiftUI
 struct TabsMenu: View {
     var body: some View {
         TabView {
-            WeekForecast().tabItem {
-                Label("Week Forecast", systemImage: "cloud.sun.fill")
+            WeekForecast(weatherForecast: <#WeatherModel#>).tabItem {
+                Label("Weather", systemImage: "thermometer.medium")
             }
             
-            Text("UV Index").tabItem {
-                Label("UV Index", systemImage: "sun.min.fill")
+            Text("U").tabItem {
+                Label("UV", systemImage: "sun.min.fill")
             }
         }
     }

@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		215375182EEBAFBA001674CF /* WeatherModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 215375172EEBAFBA001674CF /* WeatherModel.swift */; };
 		21A659E22ED8F9B10020AA6C /* DayForecast.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21A659E12ED8F9B10020AA6C /* DayForecast.swift */; };
 		21A659E42ED8FA0A0020AA6C /* WeekForecast.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21A659E32ED8FA0A0020AA6C /* WeekForecast.swift */; };
 		21A659E62ED904770020AA6C /* SampleData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21A659E52ED904770020AA6C /* SampleData.swift */; };
@@ -18,11 +19,12 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		215375172EEBAFBA001674CF /* WeatherModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherModel.swift; sourceTree = "<group>"; };
 		21A659E12ED8F9B10020AA6C /* DayForecast.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DayForecast.swift; sourceTree = "<group>"; };
 		21A659E32ED8FA0A0020AA6C /* WeekForecast.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeekForecast.swift; sourceTree = "<group>"; };
 		21A659E52ED904770020AA6C /* SampleData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SampleData.swift; sourceTree = "<group>"; };
 		21A659E72EDB3CD90020AA6C /* TabsMenu.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabsMenu.swift; sourceTree = "<group>"; };
-		21A945642E6B8F38002C4D1C /* WeatherForecast.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = WeatherForecast.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		21A945642E6B8F38002C4D1C /* Tempus.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Tempus.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		21A945672E6B8F38002C4D1C /* WeatherForecastApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherForecastApp.swift; sourceTree = "<group>"; };
 		21A945692E6B8F38002C4D1C /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		21A9456B2E6B8F39002C4D1C /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -51,7 +53,7 @@
 		21A945652E6B8F38002C4D1C /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				21A945642E6B8F38002C4D1C /* WeatherForecast.app */,
+				21A945642E6B8F38002C4D1C /* Tempus.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -63,6 +65,7 @@
 				21A945692E6B8F38002C4D1C /* ContentView.swift */,
 				21A659E72EDB3CD90020AA6C /* TabsMenu.swift */,
 				21A659E32ED8FA0A0020AA6C /* WeekForecast.swift */,
+				215375172EEBAFBA001674CF /* WeatherModel.swift */,
 				21A659E12ED8F9B10020AA6C /* DayForecast.swift */,
 				21A659E52ED904770020AA6C /* SampleData.swift */,
 				21A9456B2E6B8F39002C4D1C /* Assets.xcassets */,
@@ -82,9 +85,9 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		21A945632E6B8F38002C4D1C /* WeatherForecast */ = {
+		21A945632E6B8F38002C4D1C /* Tempus */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 21A945722E6B8F39002C4D1C /* Build configuration list for PBXNativeTarget "WeatherForecast" */;
+			buildConfigurationList = 21A945722E6B8F39002C4D1C /* Build configuration list for PBXNativeTarget "Tempus" */;
 			buildPhases = (
 				21A945602E6B8F38002C4D1C /* Sources */,
 				21A945612E6B8F38002C4D1C /* Frameworks */,
@@ -94,9 +97,9 @@
 			);
 			dependencies = (
 			);
-			name = WeatherForecast;
+			name = Tempus;
 			productName = WeatherForecast;
-			productReference = 21A945642E6B8F38002C4D1C /* WeatherForecast.app */;
+			productReference = 21A945642E6B8F38002C4D1C /* Tempus.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
@@ -114,7 +117,7 @@
 					};
 				};
 			};
-			buildConfigurationList = 21A9455F2E6B8F38002C4D1C /* Build configuration list for PBXProject "WeatherForecast" */;
+			buildConfigurationList = 21A9455F2E6B8F38002C4D1C /* Build configuration list for PBXProject "Tempus" */;
 			compatibilityVersion = "Xcode 14.0";
 			developmentRegion = en;
 			hasScannedForEncodings = 0;
@@ -127,7 +130,7 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				21A945632E6B8F38002C4D1C /* WeatherForecast */,
+				21A945632E6B8F38002C4D1C /* Tempus */,
 			);
 		};
 /* End PBXProject section */
@@ -152,6 +155,7 @@
 				21A659E42ED8FA0A0020AA6C /* WeekForecast.swift in Sources */,
 				21A9456A2E6B8F38002C4D1C /* ContentView.swift in Sources */,
 				21A659E82EDB3CD90020AA6C /* TabsMenu.swift in Sources */,
+				215375182EEBAFBA001674CF /* WeatherModel.swift in Sources */,
 				21A945682E6B8F38002C4D1C /* WeatherForecastApp.swift in Sources */,
 				21A659E62ED904770020AA6C /* SampleData.swift in Sources */,
 				21A659E22ED8F9B10020AA6C /* DayForecast.swift in Sources */,
@@ -339,7 +343,7 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		21A9455F2E6B8F38002C4D1C /* Build configuration list for PBXProject "WeatherForecast" */ = {
+		21A9455F2E6B8F38002C4D1C /* Build configuration list for PBXProject "Tempus" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				21A945702E6B8F39002C4D1C /* Debug */,
@@ -348,7 +352,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		21A945722E6B8F39002C4D1C /* Build configuration list for PBXNativeTarget "WeatherForecast" */ = {
+		21A945722E6B8F39002C4D1C /* Build configuration list for PBXNativeTarget "Tempus" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				21A945732E6B8F39002C4D1C /* Debug */,
