@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		2127E5022F06E86B0042C4C7 /* SearchBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2127E5012F06E86B0042C4C7 /* SearchBar.swift */; };
 		215375182EEBAFBA001674CF /* WeatherModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 215375172EEBAFBA001674CF /* WeatherModel.swift */; };
 		21A659E22ED8F9B10020AA6C /* DayForecast.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21A659E12ED8F9B10020AA6C /* DayForecast.swift */; };
 		21A659E42ED8FA0A0020AA6C /* WeekForecast.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21A659E32ED8FA0A0020AA6C /* WeekForecast.swift */; };
@@ -19,6 +20,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		2127E5012F06E86B0042C4C7 /* SearchBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchBar.swift; sourceTree = "<group>"; };
 		215375172EEBAFBA001674CF /* WeatherModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherModel.swift; sourceTree = "<group>"; };
 		21A659E12ED8F9B10020AA6C /* DayForecast.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DayForecast.swift; sourceTree = "<group>"; };
 		21A659E32ED8FA0A0020AA6C /* WeekForecast.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeekForecast.swift; sourceTree = "<group>"; };
@@ -65,6 +67,7 @@
 				21A945692E6B8F38002C4D1C /* ContentView.swift */,
 				21A659E72EDB3CD90020AA6C /* TabsMenu.swift */,
 				21A659E32ED8FA0A0020AA6C /* WeekForecast.swift */,
+				2127E5012F06E86B0042C4C7 /* SearchBar.swift */,
 				215375172EEBAFBA001674CF /* WeatherModel.swift */,
 				21A659E12ED8F9B10020AA6C /* DayForecast.swift */,
 				21A659E52ED904770020AA6C /* SampleData.swift */,
@@ -157,6 +160,7 @@
 				21A659E82EDB3CD90020AA6C /* TabsMenu.swift in Sources */,
 				215375182EEBAFBA001674CF /* WeatherModel.swift in Sources */,
 				21A945682E6B8F38002C4D1C /* WeatherForecastApp.swift in Sources */,
+				2127E5022F06E86B0042C4C7 /* SearchBar.swift in Sources */,
 				21A659E62ED904770020AA6C /* SampleData.swift in Sources */,
 				21A659E22ED8F9B10020AA6C /* DayForecast.swift in Sources */,
 			);

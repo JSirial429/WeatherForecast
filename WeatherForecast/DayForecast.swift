@@ -12,6 +12,7 @@ struct DayForecast: View {
     let isRainy: Bool
     let high: Int
     let low: Int
+    @Binding var isSearchBarVisible: Bool
     
     var iconName: String{
         if isRainy{
@@ -31,26 +32,65 @@ struct DayForecast: View {
     
     var body: some View {
         VStack {
-            Text(day)
-                .font(Font.headline)
-            
-            Image(systemName: iconName)
-                .foregroundStyle(iconColor)
-                .font(Font.largeTitle)
-                .padding(5)
-            
-            Text("\(high)")
-                .fontWeight(/*@START_MENU_TOKEN@*/.bold/*@END_MENU_TOKEN@*/)
-            
-            Text("\(low)")
-                .fontWeight(.regular)
-                .foregroundStyle(Color.secondary)
-            
+            /*if !isSearchBarVisible{
+                VStack{
+                    Text(day)
+                        .font(Font.headline)
+                    
+                    Image(systemName: iconName)
+                        .foregroundStyle(iconColor)
+                        .font(Font.largeTitle)
+                        .padding(5)
+                    
+                    Text("\(high)")
+                        .fontWeight(/*@START_MENU_TOKEN@*/.bold/*@END_MENU_TOKEN@*/)
+                    
+                    Text("\(low)")
+                        .fontWeight(.regular)
+                        .foregroundStyle(Color.secondary)
+                }
+            }
+            else{
+                VStack{
+                    Text(day)
+                        .font(Font.headline)
+                    
+                    Image(systemName: iconName)
+                        .foregroundStyle(iconColor)
+                        .font(Font.largeTitle)
+                        .padding(5)
+                    
+                    Text("\(high)")
+                        .fontWeight(/*@START_MENU_TOKEN@*/.bold/*@END_MENU_TOKEN@*/)
+                    
+                    Text("\(low)")
+                        .fontWeight(.regular)
+                        .foregroundStyle(Color.secondary)
+                }
+                //.offset(x: 0, y: -20)
+            }*/
+            VStack{
+                Text(day)
+                    .font(Font.headline)
+                
+                Image(systemName: iconName)
+                    .foregroundStyle(iconColor)
+                    .font(Font.largeTitle)
+                    .padding(5)
+                
+                Text("\(high)")
+                    .fontWeight(/*@START_MENU_TOKEN@*/.bold/*@END_MENU_TOKEN@*/)
+                
+                Text("\(low)")
+                    .fontWeight(.regular)
+                    .foregroundStyle(Color.secondary)
+            }
         }
         .padding()
     }
 }
 
 #Preview {
-    DayForecast(day: "Mon", isRainy: true, high: 93, low: 83)
+    @Previewable @State var toggledValue = true
+    DayForecast(day: "Mon", isRainy: true, high: 93, low: 83, isSearchBarVisible: $toggledValue)
 }
