@@ -22,6 +22,8 @@ struct SearchBar: View {
         .cornerRadius(8)
         .padding([.leading, .trailing])
         .offset(x:0,y:-320)
+        .transition(.asymmetric(insertion: .slide.combined(with: .opacity),
+                            removal: .move(edge: .leading).combined(with: .opacity)))
     }
 }
 

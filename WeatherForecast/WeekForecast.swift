@@ -51,11 +51,15 @@ struct WeekForecast: View{
                 ToolbarItem{
                     if isSearchBarVisible{
                         Button("End"){
-                            isSearchBarVisible.toggle()
+                            withAnimation(.easeInOut(duration: 0.5)){
+                                isSearchBarVisible.toggle()
+                            }
                         }
                     }else{
                         Button(action: {
-                            isSearchBarVisible.toggle()
+                            withAnimation(.easeInOut(duration: 0.5)){
+                                isSearchBarVisible.toggle()
+                            }
                         }, label: {
                             Image(systemName:"magnifyingglass")
                         })
