@@ -17,12 +17,25 @@ struct WeekForecast: View{
     @State private var isSearchBarVisible = false
     
     var body: some View {
-        NavigationStack{
-            VStack{
-                if isSearchBarVisible{
-                    //Call Custom View of Search Bar
-                    ZStack{
-                        SearchBar(searchText: searchText)
+        if isSearchBarVisible{
+            NavigationStack{
+                VStack{
+                    if isSearchBarVisible{
+                        //Call Custom View of Search Bar
+                        ZStack{
+                            //SearchBar(searchText: searchText)
+                            ScrollView(.horizontal, showsIndicators: true){
+                                HStack{
+                                    ForEach(daysOfTheWeek, id: \.description){
+                                        day in DayForecast(day: day, isRainy: true, high: 90, low: 30, isSearchBarVisible: $isSearchBarVisible)
+                                    }
+                                }
+                                .task {
+                                    //await weather.getWeatherData()
+                                }
+                            }
+                        }
+                    }else{
                         ScrollView(.horizontal, showsIndicators: true){
                             HStack{
                                 ForEach(daysOfTheWeek, id: \.description){
@@ -34,39 +47,81 @@ struct WeekForecast: View{
                             }
                         }
                     }
-                }else{
-                    ScrollView(.horizontal, showsIndicators: true){
-                        HStack{
-                            ForEach(daysOfTheWeek, id: \.description){
-                                day in DayForecast(day: day, isRainy: true, high: 90, low: 30, isSearchBarVisible: $isSearchBarVisible)
+                }
+                .toolbar{
+                    ToolbarItem{
+                        if isSearchBarVisible{
+                            Button("End"){
+                                withAnimation(.easeInOut(duration: 0.5)){
+                                    isSearchBarVisible.toggle()
+                                }
                             }
-                        }
-                        .task {
-                            //await weather.getWeatherData()
+                        }else{
+                            Button(action: {
+                                withAnimation(.easeInOut(duration: 0.5)){
+                                    isSearchBarVisible.toggle()
+                                }
+                            }, label: {
+                                Image(systemName:"magnifyingglass")
+                            })
                         }
                     }
                 }
             }
-            .toolbar{
-                ToolbarItem{
+            .searchable(text: $searchText, prompt: "Search Location")
+        }else{
+            NavigationStack{
+                VStack{
                     if isSearchBarVisible{
-                        Button("End"){
-                            withAnimation(.easeInOut(duration: 0.5)){
-                                isSearchBarVisible.toggle()
+                        //Call Custom View of Search Bar
+                        ZStack{
+                            SearchBar(searchText: searchText)
+                            ScrollView(.horizontal, showsIndicators: true){
+                                HStack{
+                                    ForEach(daysOfTheWeek, id: \.description){
+                                        day in DayForecast(day: day, isRainy: true, high: 90, low: 30, isSearchBarVisible: $isSearchBarVisible)
+                                    }
+                                }
+                                .task {
+                                    //await weather.getWeatherData()
+                                }
                             }
                         }
                     }else{
-                        Button(action: {
-                            withAnimation(.easeInOut(duration: 0.5)){
-                                isSearchBarVisible.toggle()
+                        ScrollView(.horizontal, showsIndicators: true){
+                            HStack{
+                                ForEach(daysOfTheWeek, id: \.description){
+                                    day in DayForecast(day: day, isRainy: true, high: 90, low: 30, isSearchBarVisible: $isSearchBarVisible)
+                                }
                             }
-                        }, label: {
-                            Image(systemName:"magnifyingglass")
-                        })
+                            .task {
+                                //await weather.getWeatherData()
+                            }
+                        }
+                    }
+                }
+                .toolbar{
+                    ToolbarItem{
+                        if isSearchBarVisible{
+                            Button("End"){
+                                withAnimation(.easeInOut(duration: 0.5)){
+                                    isSearchBarVisible.toggle()
+                                }
+                            }
+                        }else{
+                            Button(action: {
+                                withAnimation(.easeInOut(duration: 0.5)){
+                                    isSearchBarVisible.toggle()
+                                }
+                            }, label: {
+                                Image(systemName:"magnifyingglass")
+                            })
+                        }
                     }
                 }
             }
         }
+        
     }
 }
 

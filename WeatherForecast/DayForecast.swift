@@ -71,6 +71,7 @@ struct DayForecast: View {
             }*/
             VStack{
                 Text(day)
+                    .foregroundStyle(.white)
                     .font(Font.headline)
                 
                 Image(systemName: iconName)
@@ -79,12 +80,15 @@ struct DayForecast: View {
                     .padding(5)
                 
                 Text("\(high)")
+                    .foregroundStyle(.white)
                     .fontWeight(/*@START_MENU_TOKEN@*/.bold/*@END_MENU_TOKEN@*/)
                 
                 Text("\(low)")
                     .fontWeight(.regular)
-                    .foregroundStyle(Color.secondary)
+                    .foregroundStyle(Color.gray.opacity(0.75))
             }
+            .padding()
+            .background(RoundedRectangle(cornerRadius: 10).fill(Color.blue.opacity(0.25)))
         }
         .padding()
     }
