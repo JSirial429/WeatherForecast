@@ -14,7 +14,7 @@ struct TabsMenu: View {
                 Label("Week Forecast", systemImage: "cloud.sun.fill")
             }
             
-            Text("UV Index").tabItem {
+            UVIndexCircularProgressView().tabItem {
                 Label("UV Index", systemImage: "sun.min.fill")
             }
         }

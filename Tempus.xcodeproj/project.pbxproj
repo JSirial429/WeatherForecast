@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		21023B552F2EF03600D7E1E7 /* UVIndexCircularProgressView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21023B542F2EF03600D7E1E7 /* UVIndexCircularProgressView.swift */; };
 		2127E5022F06E86B0042C4C7 /* SearchBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2127E5012F06E86B0042C4C7 /* SearchBar.swift */; };
 		215375182EEBAFBA001674CF /* WeatherModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 215375172EEBAFBA001674CF /* WeatherModel.swift */; };
 		21A659E22ED8F9B10020AA6C /* DayForecast.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21A659E12ED8F9B10020AA6C /* DayForecast.swift */; };
@@ -20,6 +21,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		21023B542F2EF03600D7E1E7 /* UVIndexCircularProgressView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UVIndexCircularProgressView.swift; sourceTree = "<group>"; };
 		2127E5012F06E86B0042C4C7 /* SearchBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchBar.swift; sourceTree = "<group>"; };
 		215375172EEBAFBA001674CF /* WeatherModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherModel.swift; sourceTree = "<group>"; };
 		21A659E12ED8F9B10020AA6C /* DayForecast.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DayForecast.swift; sourceTree = "<group>"; };
@@ -70,6 +72,7 @@
 				2127E5012F06E86B0042C4C7 /* SearchBar.swift */,
 				215375172EEBAFBA001674CF /* WeatherModel.swift */,
 				21A659E12ED8F9B10020AA6C /* DayForecast.swift */,
+				21023B542F2EF03600D7E1E7 /* UVIndexCircularProgressView.swift */,
 				21A659E52ED904770020AA6C /* SampleData.swift */,
 				21A9456B2E6B8F39002C4D1C /* Assets.xcassets */,
 				21A9456D2E6B8F39002C4D1C /* Preview Content */,
@@ -156,6 +159,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				21A659E42ED8FA0A0020AA6C /* WeekForecast.swift in Sources */,
+				21023B552F2EF03600D7E1E7 /* UVIndexCircularProgressView.swift in Sources */,
 				21A9456A2E6B8F38002C4D1C /* ContentView.swift in Sources */,
 				21A659E82EDB3CD90020AA6C /* TabsMenu.swift in Sources */,
 				215375182EEBAFBA001674CF /* WeatherModel.swift in Sources */,
