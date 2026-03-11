@@ -12,7 +12,7 @@ struct DayForecast: View {
     let isRainy: Bool
     let high: Int
     let low: Int
-    @Binding var isSearchBarVisible: Bool
+    //@Binding var isSearchBarVisible: Bool
     
     var iconName: String{
         if isRainy{
@@ -32,43 +32,6 @@ struct DayForecast: View {
     
     var body: some View {
         VStack {
-            /*if !isSearchBarVisible{
-                VStack{
-                    Text(day)
-                        .font(Font.headline)
-                    
-                    Image(systemName: iconName)
-                        .foregroundStyle(iconColor)
-                        .font(Font.largeTitle)
-                        .padding(5)
-                    
-                    Text("\(high)")
-                        .fontWeight(/*@START_MENU_TOKEN@*/.bold/*@END_MENU_TOKEN@*/)
-                    
-                    Text("\(low)")
-                        .fontWeight(.regular)
-                        .foregroundStyle(Color.secondary)
-                }
-            }
-            else{
-                VStack{
-                    Text(day)
-                        .font(Font.headline)
-                    
-                    Image(systemName: iconName)
-                        .foregroundStyle(iconColor)
-                        .font(Font.largeTitle)
-                        .padding(5)
-                    
-                    Text("\(high)")
-                        .fontWeight(/*@START_MENU_TOKEN@*/.bold/*@END_MENU_TOKEN@*/)
-                    
-                    Text("\(low)")
-                        .fontWeight(.regular)
-                        .foregroundStyle(Color.secondary)
-                }
-                //.offset(x: 0, y: -20)
-            }*/
             VStack{
                 Text(day)
                     .foregroundStyle(.white)
@@ -95,6 +58,6 @@ struct DayForecast: View {
 }
 
 #Preview {
-    @Previewable @State var toggledValue = true
-    DayForecast(day: "Mon", isRainy: true, high: 93, low: 83, isSearchBarVisible: $toggledValue)
+    //@Previewable @State var toggledValue = true
+    DayForecast(day: "Mon", isRainy: true, high: 93, low: 83)
 }

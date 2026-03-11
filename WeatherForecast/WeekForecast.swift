@@ -19,35 +19,33 @@ struct WeekForecast: View{
     var body: some View {
         if isSearchBarVisible{
             NavigationStack{
+                VStack {
+                    HStack(){
+                        Text("City Placeholder")
+                        Spacer()
+                    }
+                    .padding(10)
+                    .border(Color.red)
+                }
+                .padding(.bottom, 200)
+                .border(Color.blue)
+                
                 VStack{
-                    if isSearchBarVisible{
-                        //Call Custom View of Search Bar
-                        ZStack{
-                            //SearchBar(searchText: searchText)
-                            ScrollView(.horizontal, showsIndicators: true){
-                                HStack{
-                                    ForEach(daysOfTheWeek, id: \.description){
-                                        day in DayForecast(day: day, isRainy: true, high: 90, low: 30, isSearchBarVisible: $isSearchBarVisible)
-                                    }
-                                }
-                                .task {
-                                    //await weather.getWeatherData()
+                    ScrollView(.horizontal, showsIndicators: true){
+                        HStack{
+                            ForEach(daysOfTheWeek, id: \.description){
+                                day in NavigationLink(destination: Text("This is a test")){
+                                    DayForecast(day: day, isRainy: true, high: 90, low: 30)
                                 }
                             }
                         }
-                    }else{
-                        ScrollView(.horizontal, showsIndicators: true){
-                            HStack{
-                                ForEach(daysOfTheWeek, id: \.description){
-                                    day in DayForecast(day: day, isRainy: true, high: 90, low: 30, isSearchBarVisible: $isSearchBarVisible)
-                                }
-                            }
-                            .task {
-                                //await weather.getWeatherData()
-                            }
+                        .task {
+                            //await weather.getWeatherData()
                         }
                     }
                 }
+                .padding(20)
+                .border(.red)
                 .toolbar{
                     ToolbarItem{
                         if isSearchBarVisible{
@@ -67,39 +65,38 @@ struct WeekForecast: View{
                         }
                     }
                 }
+                Spacer()
             }
             .searchable(text: $searchText, prompt: "Search Location")
         }else{
             NavigationStack{
+                VStack {
+                    HStack(){
+                        Text("City Placeholder")
+                        Spacer()
+                    }
+                    .padding(10)
+                    .border(Color.red)
+                }
+                .padding(.bottom, 200)
+                .border(Color.blue)
+                
                 VStack{
-                    if isSearchBarVisible{
-                        //Call Custom View of Search Bar
-                        ZStack{
-                            SearchBar(searchText: searchText)
-                            ScrollView(.horizontal, showsIndicators: true){
-                                HStack{
-                                    ForEach(daysOfTheWeek, id: \.description){
-                                        day in DayForecast(day: day, isRainy: true, high: 90, low: 30, isSearchBarVisible: $isSearchBarVisible)
-                                    }
-                                }
-                                .task {
-                                    //await weather.getWeatherData()
+                    ScrollView(.horizontal, showsIndicators: true){
+                        HStack{
+                            ForEach(daysOfTheWeek, id: \.description){
+                                day in NavigationLink(destination: Text("This is a test")){
+                                    DayForecast(day: day, isRainy: true, high: 90, low: 30)
                                 }
                             }
                         }
-                    }else{
-                        ScrollView(.horizontal, showsIndicators: true){
-                            HStack{
-                                ForEach(daysOfTheWeek, id: \.description){
-                                    day in DayForecast(day: day, isRainy: true, high: 90, low: 30, isSearchBarVisible: $isSearchBarVisible)
-                                }
-                            }
-                            .task {
-                                //await weather.getWeatherData()
-                            }
+                        .task {
+                            //await weather.getWeatherData()
                         }
                     }
                 }
+                .padding(20)
+                .border(.red)
                 .toolbar{
                     ToolbarItem{
                         if isSearchBarVisible{
@@ -119,6 +116,7 @@ struct WeekForecast: View{
                         }
                     }
                 }
+                Spacer()
             }
         }
         
