@@ -16,110 +16,73 @@ struct WeekForecast: View{
     @State private var searchText = ""
     @State private var isSearchBarVisible = false
     
-    var body: some View {
-        if isSearchBarVisible{
-            NavigationStack{
-                VStack {
-                    HStack(){
-                        Text("City Placeholder")
-                        Spacer()
-                    }
-                    .padding(10)
-                    .border(Color.red)
+    var body: some View {        
+        NavigationStack{
+            VStack {
+                HStack(){
+                    Text(isSearchBarVisible ? " " : "City Placeholder")
+                    Spacer()
                 }
-                .padding(.bottom, 200)
-                .border(Color.blue)
-                
-                VStack{
-                    ScrollView(.horizontal, showsIndicators: true){
-                        HStack{
-                            ForEach(daysOfTheWeek, id: \.description){
-                                day in NavigationLink(destination: Text("This is a test")){
-                                    DayForecast(day: day, isRainy: true, high: 90, low: 30)
-                                }
-                            }
-                        }
-                        .task {
-                            //await weather.getWeatherData()
-                        }
-                    }
-                }
-                .padding(20)
-                .border(.red)
-                .toolbar{
-                    ToolbarItem{
-                        if isSearchBarVisible{
-                            Button("End"){
-                                withAnimation(.easeInOut(duration: 0.5)){
-                                    isSearchBarVisible.toggle()
-                                }
-                            }
-                        }else{
-                            Button(action: {
-                                withAnimation(.easeInOut(duration: 0.5)){
-                                    isSearchBarVisible.toggle()
-                                }
-                            }, label: {
-                                Image(systemName:"magnifyingglass")
-                            })
-                        }
-                    }
-                }
-                Spacer()
+                .padding(10)
+                .border(Color.red)
             }
-            .searchable(text: $searchText, prompt: "Search Location")
-        }else{
-            NavigationStack{
-                VStack {
-                    HStack(){
-                        Text("City Placeholder")
-                        Spacer()
-                    }
-                    .padding(10)
-                    .border(Color.red)
-                }
-                .padding(.bottom, 200)
-                .border(Color.blue)
-                
-                VStack{
-                    ScrollView(.horizontal, showsIndicators: true){
-                        HStack{
-                            ForEach(daysOfTheWeek, id: \.description){
-                                day in NavigationLink(destination: Text("This is a test")){
-                                    DayForecast(day: day, isRainy: true, high: 90, low: 30)
-                                }
+            .padding(.bottom, 150)
+            .border(Color.blue)
+            .ignoresSafeArea(.keyboard)
+            
+            VStack{
+                ScrollView(.horizontal, showsIndicators: true){
+                    HStack{
+                        ForEach(daysOfTheWeek, id: \.description){
+                            day in NavigationLink(destination: Text("This is a test")){
+                                DayForecast(day: day, isRainy: true, high: 90, low: 30)
                             }
                         }
-                        .task {
-                            //await weather.getWeatherData()
-                        }
+                    }
+                    .task {
+                        //await weather.getWeatherData()
                     }
                 }
-                .padding(20)
-                .border(.red)
-                .toolbar{
-                    ToolbarItem{
-                        if isSearchBarVisible{
-                            Button("End"){
-                                withAnimation(.easeInOut(duration: 0.5)){
-                                    isSearchBarVisible.toggle()
-                                }
-                            }
-                        }else{
-                            Button(action: {
-                                withAnimation(.easeInOut(duration: 0.5)){
-                                    isSearchBarVisible.toggle()
-                                }
-                            }, label: {
-                                Image(systemName:"magnifyingglass")
-                            })
-                        }
-                    }
-                }
-                Spacer()
             }
+            //.padding(20)
+            .border(.red)
+            .toolbar{
+                ToolbarItem{
+                    if isSearchBarVisible{
+                        Button("End"){
+                            withAnimation(.easeInOut(duration: 0.5)){
+                                isSearchBarVisible.toggle()
+                            }
+                        }
+                    }else{
+                        Button(action: {
+                            withAnimation(.easeInOut(duration: 0.5)){
+                                isSearchBarVisible.toggle()
+                            }
+                        }, label: {
+                            Image(systemName:"magnifyingglass")
+                        })
+                    }
+                }
+            }
+            Spacer()
         }
+        .modifier(SearchBarView(searchText: $searchText, isActive: $isSearchBarVisible))
         
+    }
+}
+
+struct SearchBarView: ViewModifier{
+    @Binding var searchText: String
+    @Binding var isActive: Bool
+    
+    func body(content: Content) -> some View {
+        if isActive{
+            content
+                .searchable(text: $searchText, prompt: "Search Place")
+        }else{
+            content
+        }
     }
 }
 
