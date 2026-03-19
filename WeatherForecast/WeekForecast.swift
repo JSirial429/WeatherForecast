@@ -13,61 +13,68 @@ struct WeekForecast: View{
     //@Environment(\.modelContext) private var context
     //@Environment(WeatherModel.self) private var weather
     let daysOfTheWeek: [String] = ["Mon", "Tue", "Wed", "Thu", "Fri", "Sat", "Sun"]
-    @State private var searchText = ""
+    @State private var searchLocation = ""
     @State private var isSearchBarVisible = false
     
     var body: some View {        
         NavigationStack{
-            VStack {
-                HStack(){
-                    Text(isSearchBarVisible ? " " : "City Placeholder")
-                    Spacer()
+            if isSearchBarVisible{
+                MapView(selectedLocation: $searchLocation)
+            }else{
+                VStack {
+                    HStack(){
+                        Text(isSearchBarVisible ? " " : searchLocation)
+                        Spacer()
+                    }
+                    .padding(10)
+                    .border(Color.red)
                 }
-                .padding(10)
-                .border(Color.red)
-            }
-            .padding(.bottom, 150)
-            .border(Color.blue)
-            .ignoresSafeArea(.keyboard)
-            
-            VStack{
-                ScrollView(.horizontal, showsIndicators: true){
-                    HStack{
-                        ForEach(daysOfTheWeek, id: \.description){
-                            day in NavigationLink(destination: Text("This is a test")){
-                                DayForecast(day: day, isRainy: true, high: 90, low: 30)
+                .padding(.bottom, 150)
+                .border(Color.blue)
+                .ignoresSafeArea(.keyboard)
+                
+                VStack{
+                    ScrollView(.horizontal, showsIndicators: true){
+                        HStack{
+                            ForEach(daysOfTheWeek, id: \.description){
+                                day in NavigationLink(destination: Text("This is a test")){
+                                    DayForecast(day: day, isRainy: true, high: 90, low: 30)
+                                }
                             }
                         }
-                    }
-                    .task {
-                        //await weather.getWeatherData()
-                    }
-                }
-            }
-            //.padding(20)
-            .border(.red)
-            .toolbar{
-                ToolbarItem{
-                    if isSearchBarVisible{
-                        Button("End"){
-                            withAnimation(.easeInOut(duration: 0.5)){
-                                isSearchBarVisible.toggle()
-                            }
+                        .task {
+                            //await weather.getWeatherData()
                         }
-                    }else{
-                        Button(action: {
-                            withAnimation(.easeInOut(duration: 0.5)){
-                                isSearchBarVisible.toggle()
-                            }
-                        }, label: {
-                            Image(systemName:"magnifyingglass")
-                        })
                     }
                 }
+                //.padding(20)
+                .border(.red)
+                .toolbar{
+                    ToolbarItem{
+                        if isSearchBarVisible{
+                            Button("End"){
+                                withAnimation(.easeInOut(duration: 0.5)){
+                                    isSearchBarVisible.toggle()
+                                }
+                            }
+                        }else{
+                            Button(action: {
+                                withAnimation(.easeInOut(duration: 0.5)){
+                                    isSearchBarVisible.toggle()
+                                }
+                            }, label: {
+                                Image(systemName:"magnifyingglass")
+                            })
+                        }
+                    }
+                }
+                Spacer()
             }
-            Spacer()
         }
-        .modifier(SearchBarView(searchText: $searchText, isActive: $isSearchBarVisible))
+        .modifier(SearchBarView(searchText: $searchLocation, isActive: $isSearchBarVisible))
+        .onSubmit(of: .search) {
+            isSearchBarVisible.toggle()
+        }
         
     }
 }
@@ -79,7 +86,7 @@ struct SearchBarView: ViewModifier{
     func body(content: Content) -> some View {
         if isActive{
             content
-                .searchable(text: $searchText, prompt: "Search Place")
+                .searchable(text: $searchText, prompt: "Search Location")
         }else{
             content
         }
