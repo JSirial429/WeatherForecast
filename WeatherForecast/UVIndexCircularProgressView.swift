@@ -8,6 +8,7 @@
 import SwiftUI
 
 struct UVIndexCircularProgressView: View {
+    let gradientAppBackground: [Color] = [.clearSkiesGradientTop, .clearSkiesGradientBottom]
     @State private var progress: CGFloat = 0.34
     
     var body: some View {
@@ -28,7 +29,10 @@ struct UVIndexCircularProgressView: View {
             Text("\(progress * 100, specifier: "%.0f")")
                                 .font(.largeTitle)
                                 .bold()
+                                .foregroundStyle(.white)
         }
+        .frame(maxWidth: .infinity, maxHeight: .infinity)
+        .background(Gradient(colors: gradientAppBackground))
     }
 }
 

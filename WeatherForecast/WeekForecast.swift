@@ -12,6 +12,7 @@ struct WeekForecast: View{
     //@Query private var weather: WeatherModel
     //@Environment(\.modelContext) private var context
     //@Environment(WeatherModel.self) private var weather
+    let gradientAppBackground: [Color] = [.clearSkiesGradientTop, .clearSkiesGradientBottom]
     let daysOfTheWeek: [String] = ["Mon", "Tue", "Wed", "Thu", "Fri", "Sat", "Sun"]
     @State private var searchLocation = ""
     @State private var isSearchBarVisible = false
@@ -22,54 +23,62 @@ struct WeekForecast: View{
             if isSearchBarVisible{
                 MapView(selectedLocation: $searchLocation, performSearch: $performSearch, isSearchBarVisible: $isSearchBarVisible)
             }else{
-                VStack {
-                    HStack(){
-                        Text(searchLocation)
-                        Spacer()
-                    }
-                    .padding(10)
-                    .border(Color.red)
-                }
-                .padding(.bottom, 120)
-                .border(Color.blue)
-                .ignoresSafeArea(.keyboard)
-                
                 VStack{
-                    ScrollView(.horizontal, showsIndicators: true){
-                        HStack{
-                            ForEach(daysOfTheWeek, id: \.description){
-                                day in NavigationLink(destination: Text("This is a test")){
-                                    DayForecast(day: day, isRainy: true, high: 90, low: 30)
+                    VStack {
+                        HStack(){
+                            Text(searchLocation)
+                                .font(.largeTitle.bold())
+                                .fontDesign(Font.Design.rounded)
+                                .foregroundStyle(Color.white)
+                            Spacer()
+                        }
+                        .padding(10)
+                        //.border(Color.red)
+                    }
+                    .padding(.bottom, 120)
+                    //.border(Color.blue)
+                    .ignoresSafeArea(.keyboard)
+                    
+                    VStack{
+                        ScrollView(.horizontal, showsIndicators: true){
+                            HStack{
+                                ForEach(daysOfTheWeek, id: \.description){
+                                    day in NavigationLink(destination: Text("This is a test")){
+                                        DayForecast(day: day, isRainy: true, high: 90, low: 30)
+                                    }
                                 }
                             }
-                        }
-                        .task {
-                            //await weather.getWeatherData()
-                        }
-                    }
-                }
-                //.padding(20)
-                .border(.red)
-                .toolbar{
-                    ToolbarItem{
-                        if isSearchBarVisible{
-                            Button("End"){
-                                withAnimation(.easeInOut(duration: 0.5)){
-                                    isSearchBarVisible.toggle()
-                                }
+                            .task {
+                                //await weather.getWeatherData()
                             }
-                        }else{
-                            Button(action: {
-                                withAnimation(.easeInOut(duration: 0.5)){
-                                    isSearchBarVisible.toggle()
-                                }
-                            }, label: {
-                                Image(systemName:"magnifyingglass")
-                            })
                         }
                     }
+                    //.padding(20)
+                    //.border(.red)
+                    .toolbar{
+                        ToolbarItem{
+                            if isSearchBarVisible{
+                                Button("End"){
+                                    withAnimation(.easeInOut(duration: 0.5)){
+                                        isSearchBarVisible.toggle()
+                                    }
+                                }
+                            }else{
+                                Button(action: {
+                                    withAnimation(.easeInOut(duration: 0.5)){
+                                        isSearchBarVisible.toggle()
+                                    }
+                                }, label: {
+                                    Image(systemName:"magnifyingglass")
+                                        .foregroundStyle(Color.white)
+                                })
+                            }
+                        }
+                    }
+                    Spacer()
                 }
-                Spacer()
+                //.background(Color.blue.opacity(0.1))
+                .background(Gradient(colors: gradientAppBackground))
             }
         }
         //.modifier(SearchBarView(searchText: $searchLocation, isActive: $isSearchBarVisible))

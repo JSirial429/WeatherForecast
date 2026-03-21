@@ -18,6 +18,7 @@ struct TabsMenu: View {
                 Label("UV Index", systemImage: "sun.min.fill")
             }
         }
+        .background(Color.blue)
     }
 }
 
