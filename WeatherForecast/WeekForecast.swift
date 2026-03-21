@@ -15,21 +15,22 @@ struct WeekForecast: View{
     let daysOfTheWeek: [String] = ["Mon", "Tue", "Wed", "Thu", "Fri", "Sat", "Sun"]
     @State private var searchLocation = ""
     @State private var isSearchBarVisible = false
+    @State private var performSearch = false
     
     var body: some View {        
         NavigationStack{
             if isSearchBarVisible{
-                MapView(selectedLocation: $searchLocation)
+                MapView(selectedLocation: $searchLocation, performSearch: $performSearch, isSearchBarVisible: $isSearchBarVisible)
             }else{
                 VStack {
                     HStack(){
-                        Text(isSearchBarVisible ? " " : searchLocation)
+                        Text(searchLocation)
                         Spacer()
                     }
                     .padding(10)
                     .border(Color.red)
                 }
-                .padding(.bottom, 150)
+                .padding(.bottom, 120)
                 .border(Color.blue)
                 .ignoresSafeArea(.keyboard)
                 
@@ -71,10 +72,10 @@ struct WeekForecast: View{
                 Spacer()
             }
         }
-        .modifier(SearchBarView(searchText: $searchLocation, isActive: $isSearchBarVisible))
-        .onSubmit(of: .search) {
-            isSearchBarVisible.toggle()
-        }
+        //.modifier(SearchBarView(searchText: $searchLocation, isActive: $isSearchBarVisible))
+        /*.onSubmit(of: .search) {
+            performSearch.toggle()
+        }*/
         
     }
 }

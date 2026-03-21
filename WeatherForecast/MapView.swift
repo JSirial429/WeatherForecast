@@ -11,6 +11,8 @@ import CoreLocation
 
 struct MapView: View {
     @Binding var selectedLocation: String
+    @Binding var performSearch: Bool
+    @Binding var isSearchBarVisible: Bool
     @State private var cameraPosition: MapCameraPosition = .automatic
     @State private var searchResults: [MKMapItem] = [] // To store search results
 
@@ -18,6 +20,7 @@ struct MapView: View {
     
     var body: some View {
         VStack{
+            SearchBar(searchText: $selectedLocation, performSearch: $performSearch, isSearchBarVisible: $isSearchBarVisible)
             Map(position: $cameraPosition)
             .onAppear {
                 geocodeCityName(selectedLocation) { coordinate in
@@ -30,10 +33,12 @@ struct MapView: View {
                     }
                 }
             }
-            .onChange(of: selectedLocation) { oldValue, newValue in
+            .onChange(of: performSearch) { oldValue, newValue in
                             // Trigger search/autocomplete as the user types
-                            performSearch(query: newValue)
-                        }
+                if performSearch{
+                    performSearch(query: selectedLocation)
+                }
+            }
         }
     }
     
@@ -77,5 +82,7 @@ struct MapView: View {
 
 #Preview {
     @Previewable @State var selectedLocation: String = "Miami"
-    MapView(selectedLocation: $selectedLocation)
+    @Previewable @State var performSearch: Bool = false
+    @Previewable @State var isSearchBarVisible: Bool = false
+    MapView(selectedLocation: $selectedLocation, performSearch: $performSearch, isSearchBarVisible: $isSearchBarVisible)
 }
