@@ -19,8 +19,7 @@ struct MapView: View {
 
     
     var body: some View {
-        VStack{
-            SearchBar(searchText: $selectedLocation, performSearch: $performSearch, isSearchBarVisible: $isSearchBarVisible)
+        ZStack{
             Map(position: $cameraPosition)
             .onAppear {
                 geocodeCityName(selectedLocation) { coordinate in
@@ -39,6 +38,7 @@ struct MapView: View {
                     performSearch(query: selectedLocation)
                 }
             }
+            .safeAreaInset(edge: .top){            SearchBar(searchText: $selectedLocation, performSearch: $performSearch, isSearchBarVisible: $isSearchBarVisible)}
         }
     }
     

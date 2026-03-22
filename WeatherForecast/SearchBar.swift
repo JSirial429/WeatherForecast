@@ -11,6 +11,7 @@ struct SearchBar: View {
     @Binding var searchText: String
     @Binding var performSearch: Bool
     @Binding var isSearchBarVisible: Bool
+    @State var isEditing: Bool = false
     
     var body: some View {
         HStack{
@@ -20,7 +21,33 @@ struct SearchBar: View {
                     .foregroundStyle(.tint)
                 
                 TextField("Search", text: $searchText)
+                    .font(.subheadline.bold())
+                    .fontDesign(Font.Design.rounded)
+                    .foregroundStyle(Color.blue)
+                    .onTapGesture {
+                        isEditing = true
+                    }
+                    .onChange(of: searchText){
+                        if searchText.count != 0{
+                            isEditing = true
+                        }else{
+                            isEditing = false
+                        }
+                    }
                     .onSubmit {performSearch.toggle()}
+                
+                if isEditing{
+                    Spacer()
+                    Button(action: {
+                        withAnimation(.easeInOut(duration: 0.5)){
+                            isEditing = false
+                            searchText = ""
+                        }
+                    }, label: {
+                        Image(systemName:"xmark")
+                            .foregroundStyle(Color.red)
+                    })
+                }
             }
             .padding(8)
             .background(Color(.systemGray6))
@@ -29,14 +56,6 @@ struct SearchBar: View {
             //.offset(x:0,y:-320)
             
             HStack{
-                Button(action: {
-                    withAnimation(.easeInOut(duration: 0.5)){
-                        searchText = ""
-                    }
-                }, label: {
-                    Image(systemName:"xmark")
-                })
-                
                 Button(action: {
                     withAnimation(.easeInOut(duration: 0.5)){
                         isSearchBarVisible.toggle()
