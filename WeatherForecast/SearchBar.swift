@@ -63,6 +63,8 @@ struct SearchBar: View {
                 }, label: {
                     Image(systemName:"checkmark")
                 })
+                .padding(2)
+                .buttonStyle(.bordered)
             }
         }
         .padding([.leading, .trailing])

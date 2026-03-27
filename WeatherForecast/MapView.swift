@@ -21,6 +21,14 @@ struct MapView: View {
     var body: some View {
         ZStack{
             Map(position: $cameraPosition)
+                .overlay(alignment: .topTrailing){
+                    Button("GPS", systemImage: "location.fill"){
+                        
+                    }
+                    .padding(20)
+                    .buttonStyle(.bordered)
+                    .labelStyle(.iconOnly)
+            }
             .onAppear {
                 geocodeCityName(selectedLocation) { coordinate in
                     if let coordinate = coordinate {
@@ -38,7 +46,10 @@ struct MapView: View {
                     performSearch(query: selectedLocation)
                 }
             }
-            .safeAreaInset(edge: .top){            SearchBar(searchText: $selectedLocation, performSearch: $performSearch, isSearchBarVisible: $isSearchBarVisible)}
+            .safeAreaInset(edge: .top){
+                SearchBar(searchText: $selectedLocation, performSearch: $performSearch, isSearchBarVisible: $isSearchBarVisible)
+                    .padding(.bottom, 9)
+            }
         }
     }
     
