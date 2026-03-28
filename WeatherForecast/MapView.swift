@@ -10,6 +10,7 @@ import MapKit
 import CoreLocation
 
 struct MapView: View {
+    @StateObject private var locationManager = LocationManager()
     @Binding var selectedLocation: String
     @Binding var performSearch: Bool
     @Binding var isSearchBarVisible: Bool
@@ -23,7 +24,8 @@ struct MapView: View {
             Map(position: $cameraPosition)
                 .overlay(alignment: .topTrailing){
                     Button("GPS", systemImage: "location.fill"){
-                        
+                        locationManager.manager.requestLocation()
+                        userLocationGPS()
                     }
                     .padding(20)
                     .buttonStyle(.bordered)
@@ -64,7 +66,25 @@ struct MapView: View {
         }
     }
     
+    func userLocationGPS(){
+        if let location = locationManager.userLocation {
+            let coordinate = location.coordinate
+            // Set the initial region for the map
+            let region = MKCoordinateRegion(
+                center: coordinate,
+                span: MKCoordinateSpan(latitudeDelta: 0.05, longitudeDelta: 0.05)
+            )
+            withAnimation { // Use animation for a smoother transition
+                
+                cameraPosition = .region(region) // Update the map camera position
+            }
+        }
+    }
+    
     func performSearch(query: String) {
+        //toggle performSearch back to false so that user can search when hitting return on keyboard
+        performSearch.toggle()
+        
         let request = MKLocalSearch.Request()
         request.naturalLanguageQuery = query
         // Restrict the search to a relevant region if desired (e.g., current map region)
